@@ -1,0 +1,44 @@
+@import url("reset.css")  screen;
+@import url("https://necolas.github.io/normalize.css/8.0.1/normalize.css");
+#container{
+    width: 100vw;
+    height: 100vh;
+    background: #CCC url('b1.jpg') no-repeat center  ;
+    background-attachment: fixed;
+    background-size: 100%;
+   display: flex;
+}
+.b{
+
+    border: 2px solid black;
+}
+#form{
+    width:60%;
+    height: 600px;
+    margin: auto;
+    display: flex;
+justify-content: flex-start;
+align-items: stretch;
+flex-direction: row-reverse;
+    /* position: absolute;
+top:50%;
+left: 50%;
+transform: translate(-50%,-50%);
+margin-left: -200px;
+margin-top: -200px; */
+}
+
+.demi2{
+flex-basis: 50%;
+}
+.demi{
+flex-basis: 50%;
+background: red;
+display: flex;
+flex-direction: column-reverse;
+
+
+}
+.vert{
+    background: green;
+}
