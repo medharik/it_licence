@@ -1,0 +1,45 @@
+@import url("https://necolas.github.io/normalize.css/8.0.1/normalize.css");
+.container{
+    width: 100vw;
+    height: 100vh;
+    background: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+
+    
+}
+.parent{
+    width: 600px;
+    height:600px;
+    background: green;
+    display: flex;
+    flex-direction: row;
+}
+.e1{
+    border: 2px solid black;
+    flex-basis: 50%;
+    display: flex;
+flex-direction: column;
+}
+.e3{
+    flex-basis: 33.33%;border: 2px solid black;
+}
+.e1 .e3:nth-child(odd){
+    background: red;
+}
+.e1 .e3:nth-child(even){
+    background: blue;
+}
+
+
+.form{
+    display: flex;
+    background: white;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
