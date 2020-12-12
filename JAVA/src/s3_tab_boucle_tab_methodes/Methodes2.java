@@ -17,29 +17,57 @@ static Scanner clavier =new Scanner(System.in);
 	for (int i = 0; i < matieres.length; i++) {
 		System.out.println(matieres[i]);
 	}
-	//saisir les notes par matieres 
-	double note[]=saisirNotes(matieres,nm);
-	//calcul de la moyenne generale
-	double moyenne=calculMoyenneGenerale(note);
 	
+	// saisir coeficients 
+	double coef[]=saisirCoeficient(matieres);
+	//saisir les notes par matieres 
+		double note[]=saisirNotes(matieres);
+	//calcul de la moyenne generale
+	double moyenne=calculMoyenneGenerale(note,coef);
+	System.out.println("la moyenne est "+moyenne);
 	observation(moyenne);
 
 	
 }
 
-private static double[] saisirNotes(String[] matieres, int nm) {
-		// TODO Auto-generated method stub
-		return null;
+private static double[] saisirCoeficient(String[] matieres) {
+	double []coef=new double[matieres.length];
+		 for (int i = 0; i < matieres.length; i++) {
+			System.out.println("Entrer le coeficient de la matiere "+matieres[i]);
+		coef[i]=clavier.nextDouble();
+				
+		 }
+		return coef;
+	}
+
+private static double[] saisirNotes(String[] matieres) {
+	double []note=new double[matieres.length];
+	 for (int i = 0; i < matieres.length; i++) {
+		System.out.println("Entrer la note de la matiere "+matieres[i]);
+		note[i]=clavier.nextDouble();
+			
+	 }
+	return note;
 	}
 
 private static void observation(double moyenne) {
-	// TODO Auto-generated method stub
+if (moyenne >=10) {
+	System.out.println("Reussite");
+} else {
+System.out.println("Echec");
+}
 	
 }
 
-private static double calculMoyenneGenerale(double[] note) {
-	// TODO Auto-generated method stub
-	return 0;
+private static double calculMoyenneGenerale(double[] note, double[] coef) {
+double sommeCoef=0,sommeNoteFoisCoef=0;
+for (int i = 0; i < coef.length; i++) {
+	sommeCoef+=coef[i];
+	sommeNoteFoisCoef += note[i]* coef[i];
+	
+}
+
+	return (sommeNoteFoisCoef/sommeCoef);
 }
 
 
