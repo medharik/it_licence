@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid ">
+        <div class="row plein">
+            <div class="col-md-6 border m-md-auto shadow p-2 rounded">
+                <form action="">
+                    <div class="mb-2"><label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="email">
+                        <span class="form-text text-danger" ></span>
+                    </div>
+                    <div><label for="passe" class="form-label">Mot de passe </label>
+                        <input type="password" class="form-control" id="passe">
+                    </div>
+                    <div class="mb-2"><label for="conf" class="form-label">Confirmation du mot de passe </label>
+                        <input type="password" class="form-control" id="conf">
+                    </div>
+                    <div class="text-center mb-2" >
+                        <button type="button" class="btn btn-primary col-md-6" onclick="valider()">
+                            Vaider  
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
+        function valider(){
+        
+            //recuperer chaque input
+        let  mail= document.getElementById('email');
+        let henson=     document.querySelector('#email+span');
+            // REGEX : microlangage (expression) traittant la syntaxe des chaines de caracteres 
+     let modele=/^[a-zA-Z0-9]{1,}@itsup.ma$/;
+     if (!modele.test(mail.value)) {
+        //  alert("email non valide")
+   henson.innerHTML="Email non valide";
+   console.log('span',s);
+     }else{
+s.innerHTML="";
+     }
+     
+
+        // alert('email est '+mail.value);
+       // console.log('email',mail.value);
+        }
+
+    </script>
+</body>
+</html>
