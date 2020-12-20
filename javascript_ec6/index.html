@@ -11,16 +11,18 @@
     <div class="container-fluid ">
         <div class="row plein">
             <div class="col-md-6 border m-md-auto shadow p-2 rounded">
-                <form action="">
+                <form action="https://www.google.com" id="mon_form">
                     <div class="mb-2"><label for="email" class="form-label">Email</label>
                         <input type="text" class="form-control" id="email">
                         <span class="form-text text-danger" ></span>
                     </div>
                     <div><label for="passe" class="form-label">Mot de passe </label>
                         <input type="password" class="form-control" id="passe">
+                        <span></span>
                     </div>
                     <div class="mb-2"><label for="conf" class="form-label">Confirmation du mot de passe </label>
                         <input type="password" class="form-control" id="conf">
+                        <span></span>
                     </div>
                     <div class="text-center mb-2" >
                         <button type="button" class="btn btn-primary col-md-6" onclick="valider()">
@@ -30,30 +32,71 @@
                 </form>
             </div>
         </div>
-
-    </div>
-    
-    <script>
-        function valider(){
         
+    </div>
+    <script>
+        let erreur=false;
+        let  valider_email =  () =>  { //arrow function
             //recuperer chaque input
-        let  mail= document.getElementById('email');
-        let henson=     document.querySelector('#email+span');
+            let  mail= document.getElementById('email');
+            let s=     document.querySelector('#email+span');
             // REGEX : microlangage (expression) traittant la syntaxe des chaines de caracteres 
-     let modele=/^[a-zA-Z0-9]{1,}@itsup.ma$/;
-     if (!modele.test(mail.value)) {
-        //  alert("email non valide")
-   henson.innerHTML="Email non valide";
-   console.log('span',s);
-     }else{
-s.innerHTML="";
-     }
+            let modele=/^\w{1,}@itsup\.ma$/;
+            if (!modele.test(mail.value)) {
+                //  alert("email non valide")
+                s.innerHTML="Email non valide";
+                console.log('span',s);
+                erreur=true;
+            }else{
+                s.innerHTML="";
+            }
+        }
+        let  valider_passe =  () =>  { //arrow function
+            //recuperer chaque input
+            let  passe= document.getElementById('passe');
+            let s=     document.querySelector('#passe+span');
+            // REGEX : microlangage (expression) traittant la syntaxe des chaines de caracteres 
+            let modele=/^itsup\d{4}$/;
+            if (!modele.test(passe.value)) {
+                //  alert("email non valide")
+                s.innerHTML="Mot de passe  non valide";
+                erreur=true;
+                console.log('span',s);
+            }else{
+                s.innerHTML="";
+            }
      
 
-        // alert('email est '+mail.value);
-       // console.log('email',mail.value);
+        }
+        let  valider_conf =  () =>  { //arrow function
+            //recuperer chaque input
+            let  passe= document.getElementById('passe');
+            let  conf= document.getElementById('conf');
+            let s=     document.querySelector('#conf+span');
+            // REGEX : microlangage (expression) traittant la syntaxe des chaines de caracteres 
+            if (conf.value!=passe.value) {
+                erreur=true;
+                //  alert("email non valide")
+                s.innerHTML="les 2 Mots de passe ne correspondent pas ";
+                console.log('span',s);
+            }else{
+                s.innerHTML="";
+            }
+     
+
         }
 
+        function valider(){
+            valider_passe();
+            valider_email();
+            valider_conf();
+            if(erreur==false)
+          document.getElementById('mon_form').submit();
+          else 
+          erreur=false
+
+          console.log('erreur est '+erreur);
+        }
     </script>
 </body>
 </html>
