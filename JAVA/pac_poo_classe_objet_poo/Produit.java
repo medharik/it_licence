@@ -9,9 +9,23 @@ public class Produit {
 	final double TVA =20;
 	
 	
+//les constructeurs : methode (sans type de retour ) permettant d'initialiser 	
+//les attributs 
+	//appelé par new
+//constructeur par defaut 	
+ Produit() {
 	
-//methods	
+}
+ //constructeur initialisant les attributs
+ Produit(String libelle,double prixVente,int qteStock){
+	this.libelle=libelle;
+	this.prixVente=prixVente;
+	this.qteStock=qteStock;
+	 
+ }
+	
 //afficher les attributs
+	
 	
 void	afficher(){
 	System.out.println("libelle : "+libelle);
@@ -47,10 +61,40 @@ double vendre(int qteAvendre){
 	return ttc;
 }
 //entreeStock(qteEntree)
-//sortieStock(int qteSortie)
-// getTtc(int qte) : retourne le ttc 
-//convertirPrix(tauxChange,NEW_DEVISE)	
-// gain()
-//gain(int qteVendue)
+// entreeStock(10)
+void entreeStock(int qteEntree){
+	if(qteEntree>0)
+	qteStock+=qteEntree;
+}
 
+
+//sortieStock(int qteSortie)
+void sortieStock(int qteSortie){
+	if(qteSortie<=qteStock)
+	qteStock-=qteSortie;
+	else
+		System.out.println("Quantite en stock est insuffisante "
+				+ "veuillez preciser une qte < "+qteStock);
+}
+// getTtc(int qte) : retourne le ttc 
+ double getTtc(int qte ){
+	return qte*prixVente*(1+TVA/100);
+	
+}
+//convertirPrix(tauxChange,NEW_DEVISE)
+ String convertirPrix(double tauxChange,String newDevise){
+	 double prixDevise=prixVente*tauxChange;
+ return prixDevise+newDevise;
+ }
+// gain()
+ double gain(){
+	 double gain =prixVente-coutRevient;
+	 return gain;
+ }
+//gain(int qteVendue)
+ double gain(int qte){
+	 double gain =gain()*qte;
+	 return gain;
+ }
+ 
 }
