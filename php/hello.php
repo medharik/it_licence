@@ -18,9 +18,19 @@ echo "En boolean : $eqage";
 //0,"",'',0.0,[],array(),null   <=> false
 //tableau indexé (numerote de 0)
 $tab=[1,"test",4,6,9]; 
-$tab[]="nasser";
+$tab[]="nasser";//push
 echo "<hr>", $tab[0],$tab[1],"<br>";
-print_r($tab);  
+// print_r($tab); 
+// les tableaux associatifs  (hash)
+$produit=['libelle'=>'hp dv6','prix'=>8000,'qte'=>80];//key => value
+echo $produit['libelle'];
+echo $produit[0];//undefined offset
+$produit['marque']='HP';
+$produit[]=200;
+$produit[3]=200;
+$produit[]=200;
+print_r($produit);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +65,68 @@ print_r($tab);
 
     <?php } ?>
 
+</table>
+<h2>parcourir un tableau associatif par for</h2>
+<hr>
+<table>
+    <tr>
+        <td>CLE</td>
+        <td>VALEUR</td>
+    </tr>
+<?php 
+$cles=array_keys($produit);
+;for($i=0;$i<count($produit);$i++){?>
+    <tr>
+        <td><?=$cles[$i];?></td>
+        <td><?=$produit[$cles[$i]]?></td>
+    </tr>
+<?php } ?>
+</table>
+<h2>parcourir un tableau associatif par foreach</h2>
+<hr>
+<table border="1">
+    <tr>
+        <td>CLE</td>
+        <td>VALEUR</td>
+    </tr>
+<?php 
+// $cles=array_keys($produit);
+foreach($produit as $key => $value){?>
+    <tr>
+        <td><?=$key;?></td>
+        <td><?=$value?></td>
+    </tr>
+<?php } ?>
+</table>
+<h2>OU ....</h2>
+<?php 
+//fonction anonyme (closure) (lambda)
+$items=function($v){
+return "<li>$v</li>";
+};
+$resultat=array_map($items,$produit);
+// echo "resutat 0 est ".$resultat['libelle'];
+// print_r($resultat);
+$listes=join(" ",$resultat);
+// print_r($resultat);
+?>
+<ul>
+<?=$listes?>
+</ul>
+<hr>
+<table border="1">
+    <tr>
+        <td>CLE</td>
+        <td>VALEUR</td>
+    </tr>
+<?php 
+// $cles=array_keys($produit);
+foreach($produit as $key => $value){?>
+    <tr>
+        <td><?=$key;?></td>
+        <td><?=$value?></td>
+    </tr>
+<?php } ?>
 </table>
     
 </body>
