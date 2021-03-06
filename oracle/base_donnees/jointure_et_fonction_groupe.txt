@@ -1,0 +1,35 @@
+-- liste des employees travaillant dans le departement sales
+select e.first_name, e.last_name , d.department_name , d.department_id
+from employees e   join departments d on e.department_id = d.department_id 
+where upper(d.department_name)='SALES';
+-- liste des employees (tous les attributs) et les villes (city) ou il travaillent 
+
+select e.*, l.city 
+from employees e 
+join departments d on e.department_id=d.department_id 
+join locations l on d.location_id=l.location_id
+where lower(l.city) like 'seattle'
+
+-- liste des employees (first_name,lastname, hire_date) ayant metier :   'Programmer' (job_title)
+ayant un salaire > 4000
+
+select e.first_name, e.last_name, e.hire_date , j.job_title , e.salary from employees e 
+join jobs j on e.job_id = j.job_id
+where e.salary > 4000 and  lower(j.job_title) = 'programmer'
+-- les 5 fonctions de groupe (agregation)  : min , max , sum , avg , count
+
+select count(*) , max(salary), min(salary),avg(salary), sum(salary),  sum(salary)/count(*) 
+ from employees
+-- nombre d'employee par (pour chaque) departement  (department_name)
+select department_name, count(*), sum(salary) , min(salary), max(salary) , avg(salary) from employees e  join departments d on e.department_id=d.department_id
+group by department_name
+-- nombre d'employes et la somme des salaires
+-- par metiers (job_title)
+select j.job_title , count(*) , sum(e.salary) from 
+employees e join jobs j on j.job_id=e.job_id
+group by j.job_title
+
+
+
+
+
